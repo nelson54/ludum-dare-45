@@ -1,16 +1,30 @@
 import Phaser from "phaser";
 
-import { Snare } from "./drums/snare.sprite";
+import {Drumset} from "./drumset.group";
+import {InputHandler} from "./input-handler";
 
 export class DrumState extends Phaser.Scene {
 
+    constructor() {
+        super();
+
+        this.inputHandler = new InputHandler(this);
+        this.drumset = new Drumset(this);
+    }
+
     preload() {
         console.log('Enter drum state');
-        Snare.preload(this);
+
+        this.drumset.preload();
     }
 
     create() {
-        new Snare(this, 300, 300);
+        this.drumset.create();
+
+        this.input.keyboard.on('keydown', (e) => {
+            console.log(e.key);
+            this.inputHandler.drumhit(e);
+        });
     }
 
     update (time, delta) {

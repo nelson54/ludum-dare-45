@@ -4,7 +4,7 @@ import {DrumState} from "./drum-state/drum.state";
 
 class HorseBeats extends Phaser.Game {
   constructor() {
-    super(1280, 720, Phaser.AUTO, document.querySelector('body'), );
+    super({width:1280, height: 720, type: Phaser.AUTO, parent: document.querySelector('body')});
 
     this.scene.add('menu-state', new MenuState(), true);
     this.scene.add('drum-state', new DrumState(), false);

@@ -1,12 +1,12 @@
 import { Drum } from "./drum.sprite";
-import image from "../../assets/drums/snare.png";
-import sound from "../../assets/drums/snare.mp3";
+import image from "../../assets/drums/cymbal.png";
+import sound from "../../assets/drums/cymbal.mp3";
 
-let name = 'snare';
-let audioName = 'snare-audio';
-let imageName = 'snare-image';
+let name = 'cymbal';
+let audioName = 'cymbal-audio';
+let imageName = 'cymbal-image';
 
-export class Snare extends Drum {
+export class Cymbal extends Drum {
     static preload(scene) {
         scene.load.audio(audioName, sound);
         scene.load.image(imageName, image);
@@ -16,4 +16,5 @@ export class Snare extends Drum {
         super(group, x, y, imageName);
         this.audioName = audioName;
     }
+
 }
