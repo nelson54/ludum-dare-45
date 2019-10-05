@@ -1,23 +1,21 @@
 import Phaser from "phaser";
+import {MenuState} from "./menu-state/menu.state";
+import {DrumState} from "./drum-state/drum.state";
 
-class JamGame extends Phaser.Game {
+class HorseBeats extends Phaser.Game {
   constructor() {
-    super(1280, 720, Phaser.AUTO, document.querySelector('body'), {
-      preload() {
-        this.game.state.add('drum-state', new DrumState(this.game, "Player 1"));
-        this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        this.game.scale.pageAlignHorizontally = true;
-        this.game.scale.pageAlignVertically = true;
-      },
-      create(){
-        this.game.input.gamepad.start();
-        this.scene.start('drum-state');
+    super(1280, 720, Phaser.AUTO, document.querySelector('body'), );
 
-        this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-      }
-    });
+    this.scene.add('menu-state', new MenuState(), true);
+    this.scene.add('drum-state', new DrumState(), false);
 
+    this.scale.mode = Phaser.Scale.FIT;
+    this.scale.pageAlignHorizontally = true;
+    this.scale.pageAlignVertically = true;
+    this.scale.fullScreenScaleMode = Phaser.Scale.FIT;
   }
+
+
 }
 
-window.game = new JamGame();
+window.game = new HorseBeats();
