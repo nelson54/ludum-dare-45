@@ -1,32 +1,23 @@
 import Phaser from "phaser";
-import logoImg from "./assets/logo.png";
 
-const config = {
-  type: Phaser.AUTO,
-  parent: "phaser-example",
-  width: 800,
-  height: 600,
-  scene: {
-    preload: preload,
-    create: create
+class JamGame extends Phaser.Game {
+  constructor() {
+    super(1280, 720, Phaser.AUTO, document.querySelector('body'), {
+      preload() {
+        this.game.state.add('drum-state', new DrumState(this.game, "Player 1"));
+        this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        this.game.scale.pageAlignHorizontally = true;
+        this.game.scale.pageAlignVertically = true;
+      },
+      create(){
+        this.game.input.gamepad.start();
+        this.scene.start('drum-state');
+
+        this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+      }
+    });
+
   }
-};
-
-const game = new Phaser.Game(config);
-
-function preload() {
-  this.load.image("logo", logoImg);
 }
 
-function create() {
-  const logo = this.add.image(400, 150, "logo");
-
-  this.tweens.add({
-    targets: logo,
-    y: 450,
-    duration: 2000,
-    ease: "Power2",
-    yoyo: true,
-    loop: -1
-  });
-}
+window.game = new JamGame();
