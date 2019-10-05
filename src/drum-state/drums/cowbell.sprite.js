@@ -14,6 +14,7 @@ export class Cowbell extends Drum {
 
     constructor(group, x, y) {
         super(group, x, y, imageName);
+        this.key = 'k';
         this.audioName = audioName;
     }
 }

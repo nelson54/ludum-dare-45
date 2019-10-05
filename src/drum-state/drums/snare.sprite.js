@@ -14,6 +14,7 @@ export class Snare extends Drum {
 
     constructor(group, x, y) {
         super(group, x, y, imageName);
+        this.key = 's';
         this.setScale(280, 200);
         this.audioName = audioName;
     }

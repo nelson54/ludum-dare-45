@@ -16,5 +16,6 @@ export class HiHat extends Drum {
         super(group, x, y, imageName);
         this.setScale(250, 100);
         this.audioName = audioName;
+        this.key = 'l';
     }
 }

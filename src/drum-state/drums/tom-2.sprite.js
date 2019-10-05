@@ -14,6 +14,7 @@ export class Tom2 extends Drum {
 
     constructor(group, x, y) {
         super(group, x, y, imageName);
+        this.key = 'f';
         this.setScale(200, 200);
         this.audioName = audioName;
     }

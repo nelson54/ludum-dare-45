@@ -21,7 +21,9 @@ export class Drum extends Phaser.GameObjects.Sprite {
     }
 
     handle(event) {
-        this.play()
+        if(event.key === this.key) {
+            this.play()
+        }
     }
 
     play() {

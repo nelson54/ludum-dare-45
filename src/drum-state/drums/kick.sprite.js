@@ -15,5 +15,6 @@ export class Kick extends Drum {
     constructor(group, x, y) {
         super(group, x, y, imageName);
         this.audioName = audioName;
+        this.key = 'j';
     }
 }
