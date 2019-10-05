@@ -6,6 +6,7 @@ import {Cowbell} from "./drums/cowbell.sprite";
 import {Tom1} from "./drums/tom-1.sprite";
 import {Tom2} from "./drums/tom-2.sprite";
 import {HiHat} from "./drums/hi-hat.sprite";
+import {Kick} from "./drums/kick.sprite";
 
 
 export class Drumset extends Phaser.GameObjects.Group {
@@ -23,6 +24,7 @@ export class Drumset extends Phaser.GameObjects.Group {
         Tom1.preload(this.scene);
         Tom2.preload(this.scene);
         HiHat.preload(this.scene);
+        Kick.preload(this.scene);
     }
 
     create() {
@@ -33,7 +35,8 @@ export class Drumset extends Phaser.GameObjects.Group {
         this.tom1 = this.addSprite(Tom1, -250, 115);
         this.tom2 = this.addSprite(Tom2, 0, 115);
         this.snare = this.addSprite(Snare, -400, 10);
-        this.hiHat = this.addSprite(HiHat, 260, 400)
+        this.hiHat = this.addSprite(HiHat, 260, 400);
+        this.kick = this.addSprite(Kick, -20, 0)
     }
 
     addSprite(Ctr, x, y) {
