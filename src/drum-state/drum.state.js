@@ -28,7 +28,7 @@ export class DrumState extends Phaser.Scene {
 
         this.drumset.create();
 
-        this.metronome = new Metronome(this, 0, 0, 'metronome');
+        this.metronome = new Metronome(this, 500, 100, 'metronome');
 
         this.input.keyboard.on('keydown', (e) => {
             console.log(e.key);

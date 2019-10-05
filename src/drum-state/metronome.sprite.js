@@ -1,21 +1,24 @@
 import Phaser from "phaser";
 import sound from '../assets/metronome.mp3';
+import image from '../assets/metronome.png';
 export class Metronome extends Phaser.GameObjects.Sprite {
 
     static preload(scene) {
         scene.load.audio('metronome', sound);
+        scene.load.image('metronome', image);
     }
 
     constructor(scene, x, y, name) {
-        super(scene, x, y, name);
+        super(scene, x, y, 'metronome');
         this.active = false;
+        this.setScale(.3)
         this.scene.add.existing(this);
     }
 
     toggle() {
         if(this.active) {
             this.active = false;
-            this.timer.stop();
+            this.timer.destroy();
         } else {
             this.active = true;
             this.timer = this.scene.time.addEvent({
@@ -28,6 +31,7 @@ export class Metronome extends Phaser.GameObjects.Sprite {
     }
 
     tick(e) { // time, delta
+        this.scaleX *= -1;
         let current = this.scene.time;
         if(!this.lastTime) {
             this.lastTime = this.scene.time.now
