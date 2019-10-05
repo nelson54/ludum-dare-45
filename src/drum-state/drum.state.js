@@ -1,7 +1,8 @@
 import Phaser from "phaser";
 
-import {Drumset} from "./drumset.group";
-import {InputHandler} from "./input-handler";
+import { Drumset } from "./drumset.group";
+import { InputHandler } from "./input-handler";
+import { Metronome } from "./metronome.sprite";
 
 export class DrumState extends Phaser.Scene {
 
@@ -14,6 +15,7 @@ export class DrumState extends Phaser.Scene {
 
     preload() {
         console.log('Enter drum state');
+        Metronome.preload(this);
 
         this.drumset.preload();
     }
@@ -21,9 +23,16 @@ export class DrumState extends Phaser.Scene {
     create() {
         this.drumset.create();
 
+        this.metronome = new Metronome(this, 0, 0, 'metronome');
+
         this.input.keyboard.on('keydown', (e) => {
             console.log(e.key);
-            this.inputHandler.drumhit(e);
+
+            if(event.key === ' ') {
+                this.metronome.toggle();
+            } else {
+                this.inputHandler.drumhit(e);
+            }
         });
     }
 
