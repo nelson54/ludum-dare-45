@@ -3,7 +3,7 @@ import Phaser from "phaser";
 export class Drum extends Phaser.GameObjects.Sprite {
     static rawPreload(scene, name, image, sound) {
         scene.load.audio(name, `../assets/drums/${name}.mp3`);
-        scene.load.image(name, `../assets/drums/${name}.png`);
+        scene.load.image(name, `../assets/transparent.png`);
     }
 
     constructor(group, x, y, name) {

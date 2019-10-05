@@ -21,7 +21,7 @@ export class Drumset extends Phaser.GameObjects.Group {
 
     create() {
 
-        this.snare = this.addSprite(Snare, 0, 0);
+        this.snare = this.addSprite(Snare, -400, -10);
         this.cymbal = this.addSprite(Cymbal, 0, 0);
         this.cowbell = this.addSprite(Cowbell, 0, 0)
     }
@@ -30,8 +30,8 @@ export class Drumset extends Phaser.GameObjects.Group {
         let xOffset = 1280/2;
         let yOffset = 720;
 
-        x = xOffset - x;
-        y = yOffset - y;
+        x = xOffset + x;
+        y = yOffset + y;
 
         return new Ctr(this, x, y)
     }
